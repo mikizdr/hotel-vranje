@@ -1,4 +1,20 @@
 {
-    "recommendations": ["astro-build.astro-vscode"],
+    "recommendations": [
+        "pkief.material-icon-theme", // Material Icon Theme
+        "dbaeumer.vscode-eslint", // ESLint integration
+        "esbenp.prettier-vscode", // Prettier formatting
+        "astro-build.vscode-astro", // Astro language support
+        "usernamehw.errorlens", // Inline error highlighting
+        "yoavbls.pretty-ts-errors", // Better TypeScript error messages
+        "formulahendry.auto-rename-tag", // Auto rename paired JSX tags
+        "formulahendry.auto-close-tag", // Auto close JSX tags
+        "christian-kohler.path-intellisense", // Path autocomplete
+        "christian-kohler.npm-intellisense", // Autocomplete npm imports
+        "dsznajder.es7-react-js-snippets", // React/Redux snippets
+        "planbcoding.vscode-react-refactor", // JSX refactor tools
+        "eamodio.gitlens", // GitLens for Git insights
+        "streetsidesoftware.code-spell-checker", // Spell checker for props/docs
+        "wix.vscode-import-cost" // Show import sizes
+    ],
     "unwantedRecommendations": []
 }
