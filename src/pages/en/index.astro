@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { ui } from '../../i18n/ui';
+
+const locale = 'en';
+const content = ui[locale];
+---
+
+<BaseLayout title={content.title} lang="en">
+    <main>
+        <h1>{content.welcome}</h1>
+        <p>{content.description}</p>
+        <a href={getRelativeLocaleUrl('sr')}>{content.switchLabel}</a>
+    </main>
+</BaseLayout>
