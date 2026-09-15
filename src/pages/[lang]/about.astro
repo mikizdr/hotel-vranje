@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getDictionary, getStaticPathsLocales } from '../../i18n';
+
+export async function getStaticPaths() {
+    return getStaticPathsLocales();
+}
+
+const dict = getDictionary(Astro.params.lang ?? 'sr');
+---
+
+<BaseLayout title={dict.title} lang="sr">
+    <main>
+        <h1>{dict.about}</h1>
+        <p>{dict.description}</p>
+    </main>
+</BaseLayout>

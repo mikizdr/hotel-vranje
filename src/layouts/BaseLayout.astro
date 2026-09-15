@@ -1,5 +1,11 @@
 ---
 import '../styles/global.css';
+import { getDictionary, getStaticPathsLocales } from '../i18n';
+import Navbar from '../components/Navbar.astro';
+
+export async function getStaticPaths() {
+    return getStaticPathsLocales();
+}
 
 interface Props {
     title?: string;
@@ -7,6 +13,7 @@ interface Props {
 }
 
 const { title = 'Astro', lang = 'en' } = Astro.props;
+const dict = getDictionary(Astro.params.lang ?? 'sr');
 ---
 
 <html lang={lang}>
@@ -19,6 +26,7 @@ const { title = 'Astro', lang = 'en' } = Astro.props;
         <title>{title}</title>
     </head>
     <body>
+        <Navbar dict={dict} currentLang={Astro.params.lang} />
         <slot />
     </body>
 </html>

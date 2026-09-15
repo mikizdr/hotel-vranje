@@ -1,0 +1,24 @@
+---
+import { routes } from '../routes/index';
+import { getLocaleUrl } from '../i18n';
+import type { Dictionary } from '../types/Dictionary';
+
+interface Props {
+    dict: Dictionary;
+    currentLang: string;
+}
+
+const { dict, currentLang } = Astro.props;
+---
+
+<nav>
+    <a href={getLocaleUrl(currentLang, routes.home)}>
+        {dict.home}
+    </a>
+    <a href={getLocaleUrl(currentLang, routes.about)}>
+        {dict.about}
+    </a>
+    <a href={getLocaleUrl(dict.switchLanguage, Astro.url.pathname)}>
+        {dict.switchLabel}
+    </a>
+</nav>
