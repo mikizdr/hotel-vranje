@@ -18,10 +18,10 @@ export const sr = {
         switchLanguage: 'en',
         switchLabel: 'English',
         nav: {
-            home: 'Početna',
-            about: 'O nama',
-            rooms: 'Sobe',
-            contact: 'Kontakt',
+            home: 'Почетна',
+            about: 'О нама',
+            rooms: 'Собе',
+            contact: 'Контакт',
         },
         form: {
             submit: 'Pošalji zahtev za rezervaciju',
