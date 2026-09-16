@@ -1,17 +1,13 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getDictionary, getStaticPathsLocales } from '../../i18n';
+import Page from './Page.astro';
+export { getStaticPaths } from '../../i18n/staticPaths';
+import { getDictionary } from '../../i18n';
+import type { Translation } from '../../types/Translation';
 
-export async function getStaticPaths() {
-    return getStaticPathsLocales();
-}
-
-const dict = getDictionary(Astro.params.lang ?? 'sr');
+const dict: Translation = getDictionary(Astro.params.lang ?? 'sr');
+const about = dict.pages.about;
 ---
 
-<BaseLayout title={dict.title} lang="sr">
-    <main>
-        <h1>{dict.about}</h1>
-        <p>{dict.description}</p>
-    </main>
-</BaseLayout>
+<Page pageKey="about">
+    <p>{about.content}</p>
+</Page>

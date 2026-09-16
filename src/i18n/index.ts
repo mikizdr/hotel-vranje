@@ -1,13 +1,13 @@
-import { en, sr } from './languages';
-import type { Dictionary } from '../types/Dictionary';
+import { en, sr } from './translations';
+import type { Translation } from '../types/Translation';
 
 export const locales = ['sr', 'en'] as const;
 export type Locale = (typeof locales)[number];
 
-const dictionaries: Record<string, Dictionary> = { sr, en };
+const translations: Record<string, Translation> = { sr, en };
 
-export function getDictionary(lang: string): Dictionary {
-    return dictionaries[lang] ?? dictionaries['sr']; // fallback to Serbian
+export function getDictionary(lang: string): Translation {
+    return translations[lang] ?? translations['sr']; // fallback to Serbian
 }
 
 export function getStaticPathsLocales() {
