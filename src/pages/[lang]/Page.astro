@@ -1,8 +1,8 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getDictionary, getStaticPathsLocales } from '../../i18n';
-import type { Translation } from '../../types/Translation';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import type { PageKeys } from '../../types/PageKeys';
+import type { Translation } from '../../types/Translation';
 
 export async function getStaticPaths() {
     return getStaticPathsLocales();

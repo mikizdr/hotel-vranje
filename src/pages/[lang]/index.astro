@@ -1,9 +1,9 @@
 ---
-import Page from './Page.astro';
-export { getStaticPaths } from '../../i18n/staticPaths';
-
 import { getDictionary } from '../../i18n';
 import type { Translation } from '../../types/Translation';
+import Page from './Page.astro';
+
+export { getStaticPaths } from '../../i18n/staticPaths';
 
 const dict: Translation = getDictionary(Astro.params.lang ?? 'sr');
 const homepage = dict.pages.homepage;
