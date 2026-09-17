@@ -13,6 +13,14 @@ export const sr = {
             content:
                 'Ово је додатни садржај за страницу о нама. Можете овде додати више информација о хотелу, његовој историји, услугама и свему што желите да посетилац зна.',
         },
+        rooms: {
+            title: 'Собе',
+            description: 'Удобне собе за пријатан боравак.',
+        },
+        contact: {
+            title: 'Контакт',
+            description: 'Контактирајте нас за више информација и резервације.',
+        },
     },
     ui: {
         switchLanguage: 'en',
@@ -25,7 +33,7 @@ export const sr = {
         },
         form: {
             submit: 'Pošalji zahtev za rezervaciju',
-            checkin: 'Datum dolaska',
+            checkIn: 'Datum dolaska',
         },
         footer: {
             rights: 'Sva prava zadržana',
@@ -49,6 +57,14 @@ export const en = {
             content:
                 'This is additional content for the about page. You can add more information about the hotel, its history, services, and anything else you want visitors to know.',
         },
+        rooms: {
+            title: 'Rooms',
+            description: 'Comfortable rooms for a pleasant stay.',
+        },
+        contact: {
+            title: 'Contact',
+            description: 'Contact us for more information and reservations.',
+        },
     },
     ui: {
         switchLanguage: 'sr',
@@ -61,7 +77,7 @@ export const en = {
         },
         form: {
             submit: 'Send Reservation Request',
-            checkin: 'Check-in date',
+            checkIn: 'Check-in date',
         },
         footer: {
             rights: 'All rights reserved',

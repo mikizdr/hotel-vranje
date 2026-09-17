@@ -2,9 +2,9 @@
 import '../styles/global.css';
 
 import Navbar from '../components/Navbar.astro';
-import { getDictionary } from '../i18n';
+import { getDictionary, getLocaleUrl } from '../i18n';
 import type { SupportedLang } from '../i18n/config';
-import { defaultLang, supportedLangs } from '../i18n/config';
+import { supportedLangs } from '../i18n/config';
 
 interface Props {
     title?: string;
@@ -27,11 +27,7 @@ const currentPath = Astro.url.pathname.replace(/^\/(sr|en)/, '');
 
         {
             supportedLangs.map((l) => (
-                <link
-                    rel="alternate"
-                    hreflang={l}
-                    href={l === defaultLang ? `${currentPath}` : `/${l}${currentPath}`}
-                />
+                <link rel="alternate" hreflang={l} href={getLocaleUrl(l, currentPath)} />
             ))
         }
     </head>

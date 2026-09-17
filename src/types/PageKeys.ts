@@ -1,2 +1,1 @@
-// src/types/PageKeys.ts
-export type PageKeys = 'homepage' | 'about' | 'rooms' | 'contact' | 'gallery' | 'services';
+export type PageKeys = 'homepage' | 'about' | 'rooms' | 'contact';

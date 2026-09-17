@@ -23,9 +23,13 @@ export function getStaticPathsLocales() {
     return locales.map((lang) => ({ params: { lang } }));
 }
 
-export function getLocaleUrl(targetLocale: string, pathname: string) {
+export function getLocaleUrl(targetLocale: SupportedLang, pathname: string) {
     const pattern = new RegExp(`^/(${locales.join('|')})(?=/|$)`);
-    const currentPath = pathname.replace(pattern, '');
+    const currentPath = pathname.replace(pattern, '') || '/';
 
-    return `/${targetLocale}${currentPath}`;
+    if (targetLocale === defaultLang) {
+        return currentPath;
+    }
+
+    return `/${targetLocale}${currentPath === '/' ? '' : currentPath}`;
 }

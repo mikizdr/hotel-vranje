@@ -1,35 +1,33 @@
 ---
 import { getLocaleUrl } from '../i18n';
+import type { SupportedLang } from '../i18n/config';
 import { routes } from '../routes/index';
 import type { Translation } from '../types/Translation';
 
 interface Props {
     dict: Translation;
-    currentLang: string;
+    currentLang: SupportedLang;
     currentPath: string;
 }
 
 const { dict, currentLang, currentPath } = Astro.props;
 const { home, about, rooms, contact } = dict.ui.nav;
 
-// Determine the target language for switching
 const targetLang = currentLang === 'sr' ? 'en' : 'sr';
-
-// Form the URL
-const switchUrl = targetLang === 'en' ? `/en${currentPath}` : `${currentPath}`;
+const switchUrl = getLocaleUrl(targetLang, currentPath);
 ---
 
 <nav>
-    <a href={currentLang === 'sr' ? routes.home : `/en${routes.home}`}>
+    <a href={getLocaleUrl(currentLang, routes.home)}>
         {home}
     </a>
-    <a href={currentLang === 'sr' ? routes.about : `/en${routes.about}`}>
+    <a href={getLocaleUrl(currentLang, routes.about)}>
         {about}
     </a>
-    <a href={currentLang === 'sr' ? routes.rooms : `/en${routes.rooms}`}>
+    <a href={getLocaleUrl(currentLang, routes.rooms)}>
         {rooms}
     </a>
-    <a href={currentLang === 'sr' ? routes.contact : `/en${routes.contact}`}>
+    <a href={getLocaleUrl(currentLang, routes.contact)}>
         {contact}
     </a>
     <a href={switchUrl}>
