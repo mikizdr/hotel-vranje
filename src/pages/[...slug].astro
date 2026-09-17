@@ -1,0 +1,37 @@
+---
+import Page from '../components/Page.astro';
+import { pages } from '../data/pages';
+import { getDictionary } from '../i18n';
+import type { SupportedLang } from '../i18n/config';
+import type { PageKeys } from '../types/PageKeys';
+
+interface Props {
+    lang: SupportedLang;
+    pageKey: PageKeys;
+}
+
+export function getStaticPaths() {
+    const pagePaths = pages;
+
+    return [
+        { params: { slug: undefined }, props: { lang: 'sr', pageKey: 'homepage' } },
+        ...pagePaths.map((pageKey) => ({
+            params: { slug: pageKey },
+            props: { lang: 'sr', pageKey },
+        })),
+        { params: { slug: 'en' }, props: { lang: 'en', pageKey: 'homepage' } },
+        ...pagePaths.map((pageKey) => ({
+            params: { slug: `en/${pageKey}` },
+            props: { lang: 'en', pageKey },
+        })),
+    ];
+}
+
+const { lang, pageKey } = Astro.props as Props;
+const dict = getDictionary(lang);
+const page = dict.pages[pageKey];
+---
+
+<Page dict={dict} pageKey={pageKey} lang={lang}>
+    {pageKey !== 'homepage' && <p>{page.content ?? page.description}</p>}
+</Page>
