@@ -1,0 +1,11 @@
+---
+import type { PageContent } from '../../types/Translation';
+
+interface Props {
+    page: PageContent;
+}
+
+const { page } = Astro.props;
+---
+
+<p>{page.description}</p>

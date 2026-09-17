@@ -1,0 +1,26 @@
+---
+import type { PageKeys } from '../../types/PageKeys';
+import type { PageContent as PageContentData } from '../../types/Translation';
+import AboutContent from './AboutContent.astro';
+import ContactContent from './ContactContent.astro';
+import HomepageContent from './HomepageContent.astro';
+import RoomsContent from './RoomsContent.astro';
+
+interface Props {
+    pageKey: PageKeys;
+    page: PageContentData;
+}
+
+const { pageKey, page } = Astro.props;
+
+const pageComponents = {
+    homepage: HomepageContent,
+    about: AboutContent,
+    rooms: RoomsContent,
+    contact: ContactContent,
+} satisfies Record<PageKeys, typeof HomepageContent>;
+
+const ContentComponent = pageComponents[pageKey];
+---
+
+<ContentComponent page={page} />

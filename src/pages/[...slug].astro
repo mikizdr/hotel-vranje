@@ -1,5 +1,6 @@
 ---
 import Page from '../components/Page.astro';
+import PageContent from '../components/pages/PageContent.astro';
 import { pages } from '../data/pages';
 import { getDictionary } from '../i18n';
 import type { SupportedLang } from '../i18n/config';
@@ -33,5 +34,5 @@ const page = dict.pages[pageKey];
 ---
 
 <Page dict={dict} pageKey={pageKey} lang={lang}>
-    {pageKey !== 'homepage' && <p>{page.content ?? page.description}</p>}
+    <PageContent pageKey={pageKey} page={page} />
 </Page>
