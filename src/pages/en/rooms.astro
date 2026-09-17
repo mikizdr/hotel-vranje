@@ -1,0 +1,11 @@
+---
+import Page from '../../components/Page.astro';
+import { getDictionary } from '../../i18n';
+
+const dict = getDictionary('en');
+const { rooms } = dict.pages;
+---
+
+<Page dict={dict} pageKey="rooms" lang="en">
+    <p>Rooms</p>
+</Page>

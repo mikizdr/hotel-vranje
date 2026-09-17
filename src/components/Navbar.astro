@@ -1,26 +1,38 @@
 ---
-import { routes } from '../routes/index';
 import { getLocaleUrl } from '../i18n';
+import { routes } from '../routes/index';
 import type { Translation } from '../types/Translation';
 
 interface Props {
     dict: Translation;
     currentLang: string;
+    currentPath: string;
 }
 
-const { dict, currentLang } = Astro.props;
-const { home, about } = dict.ui.nav;
-console.log({ home, about });
+const { dict, currentLang, currentPath } = Astro.props;
+const { home, about, rooms, contact } = dict.ui.nav;
+
+// Determine the target language for switching
+const targetLang = currentLang === 'sr' ? 'en' : 'sr';
+
+// Form the URL
+const switchUrl = targetLang === 'en' ? `/en${currentPath}` : `${currentPath}`;
 ---
 
 <nav>
-    <a href={getLocaleUrl(currentLang, routes.home)}>
+    <a href={currentLang === 'sr' ? routes.home : `/en${routes.home}`}>
         {home}
     </a>
-    <a href={getLocaleUrl(currentLang, routes.about)}>
+    <a href={currentLang === 'sr' ? routes.about : `/en${routes.about}`}>
         {about}
     </a>
-    <a href={getLocaleUrl(dict.ui.switchLanguage, Astro.url.pathname)}>
+    <a href={currentLang === 'sr' ? routes.rooms : `/en${routes.rooms}`}>
+        {rooms}
+    </a>
+    <a href={currentLang === 'sr' ? routes.contact : `/en${routes.contact}`}>
+        {contact}
+    </a>
+    <a href={switchUrl}>
         {dict.ui.switchLabel}
     </a>
 </nav>

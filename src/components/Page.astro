@@ -1,0 +1,21 @@
+---
+import type { SupportedLang } from '../i18n/config';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { PageKeys } from '../types/PageKeys';
+import type { Translation } from '../types/Translation';
+
+interface Props {
+    dict: Translation;
+    pageKey: PageKeys;
+    lang: SupportedLang; // mandatory prop to specify the language of the page
+}
+
+const { dict, pageKey, lang } = Astro.props;
+const page = dict.pages[pageKey];
+---
+
+<BaseLayout title={page?.title ?? 'Untitled'} lang={lang}>
+    <main>
+        <slot />
+    </main>
+</BaseLayout>

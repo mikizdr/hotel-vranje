@@ -1,19 +1,19 @@
 ---
 import '../styles/global.css';
-import { getDictionary, getStaticPathsLocales } from '../i18n';
-import Navbar from '../components/Navbar.astro';
 
-export async function getStaticPaths() {
-    return getStaticPathsLocales();
-}
+import Navbar from '../components/Navbar.astro';
+import { getDictionary } from '../i18n';
+import type { SupportedLang } from '../i18n/config';
+import { defaultLang, supportedLangs } from '../i18n/config';
 
 interface Props {
     title?: string;
-    lang?: string;
+    lang: SupportedLang; // mandatory prop to specify the language of the page
 }
 
-const { title = 'Astro', lang = 'en' } = Astro.props;
-const dict = getDictionary(Astro.params.lang ?? 'sr');
+const { title = 'Astro', lang = 'sr' } = Astro.props;
+const dict = getDictionary(lang);
+const currentPath = Astro.url.pathname.replace(/^\/(sr|en)/, '');
 ---
 
 <html lang={lang}>
@@ -24,9 +24,19 @@ const dict = getDictionary(Astro.params.lang ?? 'sr');
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
+
+        {
+            supportedLangs.map((l) => (
+                <link
+                    rel="alternate"
+                    hreflang={l}
+                    href={l === defaultLang ? `${currentPath}` : `/${l}${currentPath}`}
+                />
+            ))
+        }
     </head>
     <body>
-        <Navbar dict={dict} currentLang={Astro.params.lang} />
+        <Navbar dict={dict} currentLang={lang} currentPath={currentPath} />
         <slot />
     </body>
 </html>

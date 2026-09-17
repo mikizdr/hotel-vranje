@@ -1,13 +1,22 @@
-import { en, sr } from './translations';
 import type { Translation } from '../types/Translation';
+import type { SupportedLang } from './config';
+import { defaultLang, supportedLangs } from './config';
+import { en, sr } from './translations';
 
 export const locales = ['sr', 'en'] as const;
 export type Locale = (typeof locales)[number];
 
-const translations: Record<string, Translation> = { sr, en };
+const dictionaries: Record<SupportedLang, Translation> = {
+    sr,
+    en,
+};
 
 export function getDictionary(lang: string): Translation {
-    return translations[lang] ?? translations['sr']; // fallback to Serbian
+    // IF language is not supported, return the default language dictionary
+    if (!supportedLangs.includes(lang as any)) {
+        return dictionaries[defaultLang];
+    }
+    return dictionaries[lang as SupportedLang];
 }
 
 export function getStaticPathsLocales() {
@@ -17,5 +26,6 @@ export function getStaticPathsLocales() {
 export function getLocaleUrl(targetLocale: string, pathname: string) {
     const pattern = new RegExp(`^/(${locales.join('|')})(?=/|$)`);
     const currentPath = pathname.replace(pattern, '');
+
     return `/${targetLocale}${currentPath}`;
 }
