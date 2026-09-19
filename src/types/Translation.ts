@@ -13,14 +13,29 @@ export interface UIContent {
         home: string;
         about: string;
         rooms: string;
+        roomDetails: string;
+        services: string;
         contact: string;
+        bookingOnline: string;
     };
     form: {
         submit: string;
         checkIn: string;
+        checkOut: string;
+        guest: string;
+        adult: string;
+        children: string;
+        room: string;
     };
     footer: {
         rights: string;
+        contactInfo: string;
+        usefulLinks: string;
+        gallery: string;
+        newsletter: string;
+        newsletterText: string;
+        subscribe: string;
+        emailPlaceholder: string;
     };
     switchLanguage: string;
     switchLabel: string;
