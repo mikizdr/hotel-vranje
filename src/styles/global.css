@@ -1,1 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
 @import 'tailwindcss';
+@import 'aos/dist/aos.css';
+
+/* Ported from the original Royella tailwind.config.js + index.css.
+   Tailwind v4 uses this CSS-first @theme block instead of a JS config. */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+    --color-Black: #161616;
+    --color-mediumBlack: #212121;
+    --color-normalBlack: #272727;
+    --color-lightBlack: #1e1e1e;
+    --color-gray: #616161;
+    --color-lightGray: #acacac;
+    --color-khaki: #c19d68;
+    --color-whiteSmoke: #f8f6f3;
+
+    --font-Garamond: 'Playfair Display', serif;
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Montserrat', sans-serif;
+    /* The original template also calls this font-Lora in class names,
+       even though it maps to the same Montserrat stack. Kept for parity. */
+    --font-Lora: 'Montserrat', sans-serif;
+
+    --breakpoint-esm: 480px;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --breakpoint-2xl: 1400px;
+    --breakpoint-3xl: 1600px;
+    --breakpoint-4xl: 1700px;
+
+    --shadow-custom: 0px 5px 15px rgba(204, 204, 204, 0.25);
+}
+
+::selection {
+    background-color: #c19d68;
+    color: white;
+}
+
+.Container {
+    @apply mx-auto w-full px-2 sm:w-[540px] md:w-[720px] md:px-3 lg:w-[960px] lg:px-4 xl:w-[1140px] xl:px-5 2xl:w-[1330px];
+}
+.Container-Hero {
+    @apply 3xl:w-[1250px] mx-auto w-full px-2 sm:w-[540px] md:w-[720px] md:px-3 lg:px-4 xl:w-[960px] xl:px-5 2xl:w-[1100px];
+}
+
+@utility hover-animBg {
+    @apply relative z-[1] after:absolute after:inset-0 after:top-0 after:left-0 after:z-[-1] after:h-full after:w-full after:scale-0 after:rounded-full after:bg-[#C19C67] after:transition-all after:duration-500 after:content-[""] hover:after:scale-[1];
+}
+
+.btn-primary {
+    @apply hover-animBg font-Garamond before:bg-khaki bg-khaki after:bg-normalBlack hover:border-normalBlack hover:before:bg-normalBlack relative h-[40px] w-[145px] text-sm font-medium text-white uppercase transition-all duration-300 before:absolute before:top-[48px] before:left-0 before:h-[1px] before:w-8 after:rounded-none sm:w-[155px] lg:h-[60px] lg:w-[170px] lg:text-base lg:before:top-[65px] xl:before:top-16 2xl:w-[170px];
+}
+.btn-secondary {
+    @apply hover-animBg font-Garamond hover:border-khaki hover:before:bg-khaki 3xl:w-[192px] relative h-[48px] w-[145px] border border-white text-sm font-medium text-white uppercase transition-all duration-300 before:absolute before:left-0 before:h-[1px] before:w-8 before:bg-white after:rounded-none sm:w-[155px] md:before:top-[60px] lg:h-[52px] lg:w-[170px] lg:text-base lg:before:top-[65px] 2xl:h-[60px] 2xl:w-[185px] 2xl:before:top-[70px];
+}
+.btn-items {
+    @apply hover-animBg border-lightBlack font-Garamond text-lightBlack before:bg-lightBlack hover:border-khaki hover:before:bg-khaki 3xl:w-[192px] relative h-[48px] w-[145px] border text-sm font-medium uppercase transition-all duration-300 before:absolute before:top-14 before:left-0 before:h-[1px] before:w-8 after:rounded-none hover:text-white sm:w-[155px] sm:text-base lg:w-[170px] 2xl:w-[185px] dark:border-white dark:text-white dark:before:bg-white;
+}
+.btn-subscribe {
+    @apply bg-khaki font-Garamond h-[56px] w-full text-base font-medium text-white uppercase;
+}
+
+.video-animation {
+    animation: ripple 1.6s ease-out infinite;
+}
+@keyframes ripple {
+    0%,
+    35% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2);
+    }
+}
+
+.animation-move1 {
+    animation: MOVE-BG1 3s infinite ease alternate;
+}
+.animation-move {
+    animation: MOVE-BG 3s infinite ease alternate;
+}
+@keyframes MOVE-BG1 {
+    from {
+        transform: translateX(-2px);
+    }
+    to {
+        transform: translateX(555px);
+    }
+}
+@keyframes MOVE-BG {
+    from {
+        transform: translateX(-2px);
+    }
+    to {
+        transform: translateX(35px);
+    }
+}
+
+input[type='date']::-webkit-calendar-picker-indicator {
+    filter: brightness(24.3) invert(15);
+}
+select option:checked {
+    background: -webkit-linear-gradient(bottom, #633c05 0%, #c19d68 100%);
+}
+option:checked,
+option:hover {
+    background-color: #c19d68;
+    color: white;
+}
+
+.offers {
+    @apply 3xl:bottom-[-340px] dark:bg-lightBlack absolute right-[18px] bottom-[-340px] left-[18px] my-[18px] bg-white px-[25px] py-10 transition-all duration-500 group-hover:bottom-0 lg:bottom-[-430px];
+}
+
+.member {
+    @apply border-lightGray before:bg-khaki dark:border-gray relative z-[1] overflow-hidden border bg-cover bg-center p-[30px] px-[30px] text-center transition-all duration-500 before:absolute before:top-0 before:left-1/2 before:z-[-1] before:h-full before:w-0 before:transition-all before:duration-500 hover:before:left-0 hover:before:w-full;
+}
