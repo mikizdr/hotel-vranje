@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
 
+import Footer from '../components/Footer.astro';
+import GoToTop from '../components/GoToTop.astro';
 import Navbar from '../components/Navbar.astro';
 import { getDictionary, getLocaleUrl } from '../i18n';
 import type { SupportedLang } from '../i18n/config';
@@ -32,7 +34,30 @@ const currentPath = Astro.url.pathname.replace(/^\/(sr|en)/, '');
         }
     </head>
     <body>
+        <!--
+          Dark-mode class is set before paint to avoid a flash of the wrong
+          theme. Mirrors the original Navbar's localStorage('darkMode') logic.
+        -->
+        <script is:inline>
+            if (localStorage.getItem('darkMode') === 'true') {
+                document.documentElement.classList.add('dark');
+            }
+        </script>
+
         <Navbar dict={dict} currentLang={lang} currentPath={currentPath} />
         <slot />
+        <Footer dict={dict} />
+        <GoToTop />
+
+        <!--
+          AOS (scroll animations) is plain JS, not React — one shared script
+          for the whole site, so `data-aos="..."` keeps working on fully
+          static Astro sections without needing a React island.
+        -->
+        <script>
+            import AOS from 'aos';
+            AOS.init();
+            document.addEventListener('astro:after-swap', () => AOS.refresh());
+        </script>
     </body>
 </html>
