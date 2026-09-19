@@ -1,26 +1,32 @@
 ---
+import type { SupportedLang } from '../../i18n/config';
 import type { PageKeys } from '../../types/PageKeys';
 import type { PageContent as PageContentData } from '../../types/Translation';
 import AboutContent from './AboutContent.astro';
 import ContactContent from './ContactContent.astro';
 import HomepageContent from './HomepageContent.astro';
+import RoomDetailsContent from './RoomDetailsContent.astro';
 import RoomsContent from './RoomsContent.astro';
+import ServicesContent from './ServicesContent.astro';
 
 interface Props {
     pageKey: PageKeys;
     page: PageContentData;
+    lang: SupportedLang;
 }
 
-const { pageKey, page } = Astro.props;
+const { pageKey, page, lang } = Astro.props;
 
 const pageComponents = {
     homepage: HomepageContent,
     about: AboutContent,
     rooms: RoomsContent,
+    room_details: RoomDetailsContent,
+    services: ServicesContent,
     contact: ContactContent,
 } satisfies Record<PageKeys, typeof HomepageContent>;
 
 const ContentComponent = pageComponents[pageKey];
 ---
 
-<ContentComponent page={page} />
+<ContentComponent page={page} lang={lang} />

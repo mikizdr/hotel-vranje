@@ -1,0 +1,23 @@
+<button
+    id="go-to-top"
+    aria-label="Scroll to top"
+    class="border-khaki text-khaki hover:bg-khaki fixed right-20 bottom-12 z-[999] hidden h-12 w-12 items-center justify-center rounded-full border-[3px] border-dotted transition-all duration-300 hover:border-solid hover:text-white max-md:right-0 max-md:left-[85%]"
+>
+    <svg class="h-5 w-5 animate-bounce" viewBox="0 0 24 24" fill="currentColor"
+        ><path d="M12 4l-8 8h5v8h6v-8h5z"></path></svg
+    >
+</button>
+
+<script>
+    const btn = document.getElementById('go-to-top');
+
+    function onScroll() {
+        const scrolled = document.documentElement.scrollTop || document.body.scrollTop;
+        btn?.classList.toggle('hidden', scrolled <= 20);
+        btn?.classList.toggle('flex', scrolled > 20);
+    }
+
+    btn?.addEventListener('click', () => window.scrollTo({ top: 0, left: 0, behavior: 'smooth' }));
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+</script>

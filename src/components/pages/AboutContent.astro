@@ -1,11 +1,17 @@
 ---
+import type { SupportedLang } from '../../i18n/config';
+import AboutPage from '../../islands/About/About.jsx';
 import type { PageContent } from '../../types/Translation';
 
 interface Props {
     page: PageContent;
+    lang: SupportedLang;
 }
-
-const { page } = Astro.props;
 ---
 
-<p>{page.content ?? page.description}</p>
+<!--
+  About mixes static marketing copy with a keen-slider carousel and a video
+  lightbox threaded through the same layout, so (unlike Home1) it's ported
+  as one page-level island rather than split into many small ones.
+-->
+<AboutPage client:visible />

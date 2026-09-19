@@ -1,0 +1,37 @@
+---
+import { getLocaleUrl } from '../i18n';
+import type { SupportedLang } from '../i18n/config';
+import { routes } from '../routes/index';
+
+interface Props {
+    title: string;
+    lang: SupportedLang;
+}
+
+const { title, lang } = Astro.props;
+---
+
+<section
+    class="grid h-[550px] items-center justify-center bg-[url('/images/inner/breadcumb.jpg')] bg-cover bg-center bg-no-repeat"
+>
+    <div class="mt-10 text-center">
+        <h1
+            class="font-Garamond text-3xl leading-10 font-semibold text-white uppercase md:text-4xl lg:text-5xl lg:leading-[60px] 2xl:text-6xl 2xl:leading-[70px]"
+        >
+            {title}
+        </h1>
+        <div class="flex items-center justify-center">
+            <a
+                href={getLocaleUrl(lang, routes.home)}
+                class="font-Garamond text-khaki flex items-center text-base leading-10 font-semibold lg:text-2xl 2xl:leading-[70px]"
+            >
+                Home <span class="mx-2 text-white">/</span>
+            </a>
+            <span
+                class="font-Garamond text-base leading-10 font-semibold text-white capitalize lg:text-2xl 2xl:leading-[70px]"
+            >
+                {title}
+            </span>
+        </div>
+    </div>
+</section>

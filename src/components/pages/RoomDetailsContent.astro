@@ -1,0 +1,16 @@
+---
+import type { SupportedLang } from '../../i18n/config';
+import RoomDetailsPage from '../../islands/RoomDetails/RoomDetails.jsx';
+import type { PageContent } from '../../types/Translation';
+
+interface Props {
+    page: PageContent;
+    lang: SupportedLang;
+}
+---
+
+<!--
+  Image gallery navigation + the sweetalert2 booking-confirmation flow make
+  this a single page-level island, same reasoning as About/Room.
+-->
+<RoomDetailsPage client:visible />

@@ -1,11 +1,16 @@
 ---
+import type { SupportedLang } from '../../i18n/config';
+import RoomPage from '../../islands/Room/Room.jsx';
 import type { PageContent } from '../../types/Translation';
 
 interface Props {
     page: PageContent;
+    lang: SupportedLang;
 }
-
-const { page } = Astro.props;
 ---
 
-<p>{page.description}</p>
+<!--
+  The room list has an inline booking bar (dates + guest dropdown) plus a
+  keen-slider carousel per room, so it's ported as one page-level island.
+-->
+<RoomPage client:visible />

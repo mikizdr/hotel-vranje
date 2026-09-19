@@ -1,5 +1,14 @@
 ---
+import Action from '../../islands/home1/CallDoAction/Action.jsx';
+import HeroSection from '../../islands/home1/HeroSection/HeroSection.jsx';
+import HotelAndResort from '../../islands/home1/HotelAndResort/HotelAndResort.jsx';
+import LatestBlog from '../../islands/home1/LatestBlog/LatestBlog.jsx';
+import Offers from '../../islands/home1/Offers/Offers.jsx';
+import Rooms from '../../islands/home1/Rooms/Rooms.jsx';
+import Testimonial from '../../islands/home1/Testimonial/Testimonial.jsx';
 import type { PageContent } from '../../types/Translation';
+import Facilities from '../home1/Facilities.astro';
+import HotelAndFacilities from '../home1/HotelAndFacilities.astro';
 
 interface Props {
     page: PageContent;
@@ -8,5 +17,18 @@ interface Props {
 const { page } = Astro.props;
 ---
 
-<p>{page.welcome}</p>
-<p>{page.description}</p>
+<!--
+  Section order matches the original Home1.jsx. Static marketing sections
+  (Facilities, HotelAndFacilities) render as plain HTML with zero JS.
+  Everything else uses a carousel/lightbox, so it's a small React island
+  that only hydrates once it's about to scroll into view.
+-->
+<HeroSection client:load />
+<Rooms client:visible />
+<HotelAndResort client:visible />
+<HotelAndFacilities />
+<Action client:visible />
+<Facilities />
+<Offers client:visible />
+<Testimonial client:visible />
+<LatestBlog client:visible />

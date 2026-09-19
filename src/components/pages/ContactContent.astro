@@ -1,11 +1,140 @@
 ---
+import type { SupportedLang } from '../../i18n/config';
 import type { PageContent } from '../../types/Translation';
+import BreadCrumb from '../BreadCrumb.astro';
 
 interface Props {
     page: PageContent;
+    lang: SupportedLang;
 }
 
-const { page } = Astro.props;
+const { page, lang } = Astro.props;
 ---
 
-<p>{page.description}</p>
+<div>
+    <BreadCrumb title="Contact" lang={lang} />
+
+    <div class="py-20 dark:bg-lightBlack 2xl:py-[120px]">
+        <div class="Container bg-whiteSmoke px-7 py-10 md:px-10 md:py-14 lg:px-14 xl:py-20 2xl:px-20 2xl:py-[100px] dark:bg-normalBlack">
+            <div class="flex flex-col items-center md:flex-row">
+                <div class="flex-1 py-5 sm:p-5" data-aos="zoom-in-up" data-aos-duration="1000">
+                    <p class="font-Garamond text-base leading-[26px] font-medium text-khaki">CONTACT US</p>
+                    <h2
+                        class="my-3 font-Garamond text-[22px] leading-7 font-semibold text-lightBlack uppercase sm:text-2xl md:my-5 md:text-3xl md:leading-8 lg:text-4xl lg:leading-9 xl:leading-10 2xl:text-[38px] 2xl:leading-[44px] dark:text-white"
+                    >
+                        CONTACT WITH US
+                    </h2>
+                    <p class="font-Lora text-sm leading-[26px] font-normal text-gray sm:text-base dark:text-lightGray">
+                        {page.description}
+                    </p>
+
+                    {
+                        [
+                            {
+                                label: 'Call Us Now',
+                                value: '+980 123 (4567) 890',
+                                path: 'M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z',
+                            },
+                            {
+                                label: 'Send Email',
+                                value: 'example@gmail.com',
+                                path: 'M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z',
+                            },
+                        ].map((item, i) => (
+                            <>
+                                <div class="group my-4 flex items-center md:my-5 lg:my-[26px]">
+                                    <div class="grid h-[30px] w-[30px] items-center justify-center rounded-full bg-white transition-all duration-300 group-hover:bg-khaki md:h-[40px] md:w-[40px] lg:h-[50px] lg:w-[50px] 2xl:h-[60px] 2xl:w-[60px] dark:bg-lightBlack dark:group-hover:bg-khaki">
+                                        <svg class="h-[22px] w-[22px] text-khaki group-hover:text-whiteSmoke" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d={item.path} />
+                                        </svg>
+                                    </div>
+                                    <div class="ml-3 md:ml-4">
+                                        <p class="font-Lora text-sm leading-[26px] font-normal text-gray dark:text-lightGray">{item.label}</p>
+                                        <p class="font-Garamond text-lg leading-[26px] font-medium text-lightBlack sm:text-xl md:text-[22px] dark:text-white">
+                                            {item.value}
+                                        </p>
+                                    </div>
+                                </div>
+                                {i === 0 && <hr class="h-[1px] bg-lightGray text-lightGray dark:bg-gray dark:text-gray" />}
+                            </>
+                        ))
+                    }
+                    <hr class="h-[1px] bg-lightGray text-lightGray dark:bg-gray dark:text-gray" />
+                    <div class="group my-4 flex items-center md:my-5 lg:my-[26px]">
+                        <div class="grid h-[30px] w-[30px] items-center justify-center rounded-full bg-white transition-all duration-300 group-hover:bg-khaki md:h-[40px] md:w-[40px] lg:h-[50px] lg:w-[50px] 2xl:h-[60px] 2xl:w-[60px] dark:bg-lightBlack dark:group-hover:bg-khaki">
+                            <svg class="h-[22px] w-[22px] text-khaki group-hover:text-whiteSmoke" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" />
+                            </svg>
+                        </div>
+                        <div class="ml-3 md:ml-4">
+                            <p class="font-Lora text-sm leading-[26px] font-normal text-gray dark:text-lightGray">Our Locations</p>
+                            <p class="font-Garamond text-lg leading-[26px] font-medium text-lightBlack sm:text-xl md:text-[22px] dark:text-white">
+                                New elephant Road, Dhanmondi <br /> Dhaka - 1212
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-1 py-5 sm:p-5" data-aos="zoom-in-up" data-aos-duration="1000">
+                    <div class="bg-lightBlack p-[30px] lg:p-[45px] 2xl:p-[61px]">
+                        <h2 class="text-center font-Garamond text-[22px] leading-7 font-semibold text-white sm:text-2xl md:text-[28px] md:leading-8 lg:leading-9 xl:leading-10 2xl:leading-[44px]">
+                            GET IN TOUCH
+                        </h2>
+                        <form class="mt-8 grid grid-cols-1 items-center gap-2">
+                            <input
+                                type="text"
+                                class="md:h-13 mt-4 h-12 w-full border border-gray bg-transparent px-4 text-gray placeholder:text-gray focus:border-gray focus:ring-0 focus:outline-none lg:h-[59px] dark:border-lightGray dark:text-lightGray dark:focus:border-lightGray"
+                                placeholder="Your Name"
+                                required
+                            />
+                            <input
+                                type="email"
+                                class="md:h-13 mt-4 h-12 w-full border border-gray bg-transparent px-4 text-gray placeholder:text-gray focus:border-gray focus:ring-0 focus:outline-none lg:h-[59px] dark:border-lightGray dark:text-lightGray dark:focus:border-lightGray"
+                                placeholder="Enter E-mail"
+                                required
+                            />
+                            <select
+                                id="contact-subject"
+                                class="md:h-13 mt-4 h-12 w-full border border-gray bg-transparent px-4 text-gray focus:border-gray focus:ring-0 focus:outline-none lg:h-[59px] dark:border-lightGray dark:text-lightGray dark:focus:border-lightGray"
+                            >
+                                <option class="bg-khaki px-3 py-3 text-white" value="" selected disabled>Select Subject</option>
+                                <option class="bg-whiteSmoke px-3 py-3 text-lightBlack dark:bg-normalBlack dark:text-white" value="option1">Subject One</option>
+                                <option class="bg-whiteSmoke px-3 py-3 text-lightBlack dark:bg-normalBlack dark:text-white" value="option2">Subject Two</option>
+                                <option class="bg-whiteSmoke px-3 py-3 text-lightBlack dark:bg-normalBlack dark:text-white" value="option3">Select Three</option>
+                                <option class="bg-whiteSmoke px-3 py-3 text-lightBlack dark:bg-normalBlack dark:text-white" value="option4">Select Four</option>
+                            </select>
+                            <textarea
+                                rows="10"
+                                class="mt-4 h-[121px] w-full resize-none border border-gray bg-transparent px-4 text-gray placeholder:text-gray focus:border-gray focus:ring-0 focus:outline-none dark:border-lightGray dark:text-lightGray dark:focus:border-lightGray"
+                                placeholder="Write Message:"
+                            ></textarea>
+                            <button type="submit" class="mt-5 h-10 w-full bg-khaki text-center text-white 2xl:h-[55px]">SEND MESSAGE</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div data-aos="fade-down" data-aos-duration="1000">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.279909073!2d-74.25987368715491!3d40.69767006458873!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1633418400558!5m2!1sen!2sbd"
+            height="450"
+            allowfullscreen
+            loading="lazy"
+            class="w-full"
+        ></iframe>
+    </div>
+</div>
+
+<script>
+    // Ports the original onFocus/onBlur/onChange "expand into a list" trick
+    // for the subject <select>, without needing React state for it.
+    const select = document.getElementById('contact-subject') as HTMLSelectElement | null;
+    select?.addEventListener('focus', () => (select.size = 6));
+    select?.addEventListener('blur', () => (select.size = 0));
+    select?.addEventListener('change', () => {
+        select.size = 1;
+        select.blur();
+    });
+</script>
