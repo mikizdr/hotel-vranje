@@ -7,18 +7,21 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
-  i18n: {
-      defaultLocale: 'sr',
-      locales: ['sr', 'en'],
-      routing: {
-          prefixDefaultLocale: false,
-          redirectToDefaultLocale: false,
-      },
-  },
+    site: 'https://mikizdr.github.io',
+    base: '/hotel-vranje', // omit this line if repo is named <username>.github.io
 
-  vite: {
-      plugins: [tailwindcss()],
-  },
+    i18n: {
+        defaultLocale: 'sr',
+        locales: ['sr', 'en'],
+        routing: {
+            prefixDefaultLocale: false,
+            redirectToDefaultLocale: false,
+        },
+    },
 
-  integrations: [react()],
+    vite: {
+        plugins: [tailwindcss()],
+    },
+
+    integrations: [react()],
 });
