@@ -1,7 +1,7 @@
 ---
 import type { SupportedLang } from '../../i18n/config';
 import type { PageContent } from '../../types/Translation';
-import BreadCrumb from '../BreadCrumb.astro';
+import BreadCrumb from './BreadCrumb.astro';
 
 interface Props {
     page: PageContent;
@@ -14,17 +14,23 @@ const { page, lang } = Astro.props;
 <div>
     <BreadCrumb title="Contact" lang={lang} />
 
-    <div class="py-20 dark:bg-lightBlack 2xl:py-[120px]">
-        <div class="Container bg-whiteSmoke px-7 py-10 md:px-10 md:py-14 lg:px-14 xl:py-20 2xl:px-20 2xl:py-[100px] dark:bg-normalBlack">
+    <div class="dark:bg-lightBlack py-20 2xl:py-[120px]">
+        <div
+            class="Container bg-whiteSmoke dark:bg-normalBlack px-7 py-10 md:px-10 md:py-14 lg:px-14 xl:py-20 2xl:px-20 2xl:py-[100px]"
+        >
             <div class="flex flex-col items-center md:flex-row">
                 <div class="flex-1 py-5 sm:p-5" data-aos="zoom-in-up" data-aos-duration="1000">
-                    <p class="font-Garamond text-base leading-[26px] font-medium text-khaki">CONTACT US</p>
+                    <p class="font-Garamond text-khaki text-base leading-[26px] font-medium">
+                        CONTACT US
+                    </p>
                     <h2
-                        class="my-3 font-Garamond text-[22px] leading-7 font-semibold text-lightBlack uppercase sm:text-2xl md:my-5 md:text-3xl md:leading-8 lg:text-4xl lg:leading-9 xl:leading-10 2xl:text-[38px] 2xl:leading-[44px] dark:text-white"
+                        class="font-Garamond text-lightBlack my-3 text-[22px] leading-7 font-semibold uppercase sm:text-2xl md:my-5 md:text-3xl md:leading-8 lg:text-4xl lg:leading-9 xl:leading-10 2xl:text-[38px] 2xl:leading-[44px] dark:text-white"
                     >
                         CONTACT WITH US
                     </h2>
-                    <p class="font-Lora text-sm leading-[26px] font-normal text-gray sm:text-base dark:text-lightGray">
+                    <p
+                        class="font-Lora text-gray dark:text-lightGray text-sm leading-[26px] font-normal sm:text-base"
+                    >
                         {page.description}
                     </p>
 
@@ -43,32 +49,54 @@ const { page, lang } = Astro.props;
                         ].map((item, i) => (
                             <>
                                 <div class="group my-4 flex items-center md:my-5 lg:my-[26px]">
-                                    <div class="grid h-[30px] w-[30px] items-center justify-center rounded-full bg-white transition-all duration-300 group-hover:bg-khaki md:h-[40px] md:w-[40px] lg:h-[50px] lg:w-[50px] 2xl:h-[60px] 2xl:w-[60px] dark:bg-lightBlack dark:group-hover:bg-khaki">
-                                        <svg class="h-[22px] w-[22px] text-khaki group-hover:text-whiteSmoke" viewBox="0 0 24 24" fill="currentColor">
+                                    <div class="group-hover:bg-khaki dark:bg-lightBlack dark:group-hover:bg-khaki grid h-[30px] w-[30px] items-center justify-center rounded-full bg-white transition-all duration-300 md:h-[40px] md:w-[40px] lg:h-[50px] lg:w-[50px] 2xl:h-[60px] 2xl:w-[60px]">
+                                        <svg
+                                            class="text-khaki group-hover:text-whiteSmoke h-[22px] w-[22px]"
+                                            viewBox="0 0 24 24"
+                                            fill="currentColor"
+                                        >
                                             <path d={item.path} />
                                         </svg>
                                     </div>
                                     <div class="ml-3 md:ml-4">
-                                        <p class="font-Lora text-sm leading-[26px] font-normal text-gray dark:text-lightGray">{item.label}</p>
-                                        <p class="font-Garamond text-lg leading-[26px] font-medium text-lightBlack sm:text-xl md:text-[22px] dark:text-white">
+                                        <p class="font-Lora text-gray dark:text-lightGray text-sm leading-[26px] font-normal">
+                                            {item.label}
+                                        </p>
+                                        <p class="font-Garamond text-lightBlack text-lg leading-[26px] font-medium sm:text-xl md:text-[22px] dark:text-white">
                                             {item.value}
                                         </p>
                                     </div>
                                 </div>
-                                {i === 0 && <hr class="h-[1px] bg-lightGray text-lightGray dark:bg-gray dark:text-gray" />}
+                                {i === 0 && (
+                                    <hr class="bg-lightGray text-lightGray dark:bg-gray dark:text-gray h-[1px]" />
+                                )}
                             </>
                         ))
                     }
-                    <hr class="h-[1px] bg-lightGray text-lightGray dark:bg-gray dark:text-gray" />
+                    <hr class="bg-lightGray text-lightGray dark:bg-gray dark:text-gray h-[1px]" />
                     <div class="group my-4 flex items-center md:my-5 lg:my-[26px]">
-                        <div class="grid h-[30px] w-[30px] items-center justify-center rounded-full bg-white transition-all duration-300 group-hover:bg-khaki md:h-[40px] md:w-[40px] lg:h-[50px] lg:w-[50px] 2xl:h-[60px] 2xl:w-[60px] dark:bg-lightBlack dark:group-hover:bg-khaki">
-                            <svg class="h-[22px] w-[22px] text-khaki group-hover:text-whiteSmoke" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" />
+                        <div
+                            class="group-hover:bg-khaki dark:bg-lightBlack dark:group-hover:bg-khaki grid h-[30px] w-[30px] items-center justify-center rounded-full bg-white transition-all duration-300 md:h-[40px] md:w-[40px] lg:h-[50px] lg:w-[50px] 2xl:h-[60px] 2xl:w-[60px]"
+                        >
+                            <svg
+                                class="text-khaki group-hover:text-whiteSmoke h-[22px] w-[22px]"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                            >
+                                <path
+                                    d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"
+                                ></path>
                             </svg>
                         </div>
                         <div class="ml-3 md:ml-4">
-                            <p class="font-Lora text-sm leading-[26px] font-normal text-gray dark:text-lightGray">Our Locations</p>
-                            <p class="font-Garamond text-lg leading-[26px] font-medium text-lightBlack sm:text-xl md:text-[22px] dark:text-white">
+                            <p
+                                class="font-Lora text-gray dark:text-lightGray text-sm leading-[26px] font-normal"
+                            >
+                                Our Locations
+                            </p>
+                            <p
+                                class="font-Garamond text-lightBlack text-lg leading-[26px] font-medium sm:text-xl md:text-[22px] dark:text-white"
+                            >
                                 New elephant Road, Dhanmondi <br /> Dhaka - 1212
                             </p>
                         </div>
@@ -77,38 +105,60 @@ const { page, lang } = Astro.props;
 
                 <div class="flex-1 py-5 sm:p-5" data-aos="zoom-in-up" data-aos-duration="1000">
                     <div class="bg-lightBlack p-[30px] lg:p-[45px] 2xl:p-[61px]">
-                        <h2 class="text-center font-Garamond text-[22px] leading-7 font-semibold text-white sm:text-2xl md:text-[28px] md:leading-8 lg:leading-9 xl:leading-10 2xl:leading-[44px]">
+                        <h2
+                            class="font-Garamond text-center text-[22px] leading-7 font-semibold text-white sm:text-2xl md:text-[28px] md:leading-8 lg:leading-9 xl:leading-10 2xl:leading-[44px]"
+                        >
                             GET IN TOUCH
                         </h2>
                         <form class="mt-8 grid grid-cols-1 items-center gap-2">
                             <input
                                 type="text"
-                                class="md:h-13 mt-4 h-12 w-full border border-gray bg-transparent px-4 text-gray placeholder:text-gray focus:border-gray focus:ring-0 focus:outline-none lg:h-[59px] dark:border-lightGray dark:text-lightGray dark:focus:border-lightGray"
+                                class="border-gray text-gray placeholder:text-gray focus:border-gray dark:border-lightGray dark:text-lightGray dark:focus:border-lightGray mt-4 h-12 w-full border bg-transparent px-4 focus:ring-0 focus:outline-none md:h-13 lg:h-[59px]"
                                 placeholder="Your Name"
                                 required
                             />
                             <input
                                 type="email"
-                                class="md:h-13 mt-4 h-12 w-full border border-gray bg-transparent px-4 text-gray placeholder:text-gray focus:border-gray focus:ring-0 focus:outline-none lg:h-[59px] dark:border-lightGray dark:text-lightGray dark:focus:border-lightGray"
+                                class="border-gray text-gray placeholder:text-gray focus:border-gray dark:border-lightGray dark:text-lightGray dark:focus:border-lightGray mt-4 h-12 w-full border bg-transparent px-4 focus:ring-0 focus:outline-none md:h-13 lg:h-[59px]"
                                 placeholder="Enter E-mail"
                                 required
                             />
                             <select
                                 id="contact-subject"
-                                class="md:h-13 mt-4 h-12 w-full border border-gray bg-transparent px-4 text-gray focus:border-gray focus:ring-0 focus:outline-none lg:h-[59px] dark:border-lightGray dark:text-lightGray dark:focus:border-lightGray"
+                                class="border-gray text-gray focus:border-gray dark:border-lightGray dark:text-lightGray dark:focus:border-lightGray mt-4 h-12 w-full border bg-transparent px-4 focus:ring-0 focus:outline-none md:h-13 lg:h-[59px]"
                             >
-                                <option class="bg-khaki px-3 py-3 text-white" value="" selected disabled>Select Subject</option>
-                                <option class="bg-whiteSmoke px-3 py-3 text-lightBlack dark:bg-normalBlack dark:text-white" value="option1">Subject One</option>
-                                <option class="bg-whiteSmoke px-3 py-3 text-lightBlack dark:bg-normalBlack dark:text-white" value="option2">Subject Two</option>
-                                <option class="bg-whiteSmoke px-3 py-3 text-lightBlack dark:bg-normalBlack dark:text-white" value="option3">Select Three</option>
-                                <option class="bg-whiteSmoke px-3 py-3 text-lightBlack dark:bg-normalBlack dark:text-white" value="option4">Select Four</option>
+                                <option
+                                    class="bg-khaki px-3 py-3 text-white"
+                                    value=""
+                                    selected
+                                    disabled>Select Subject</option
+                                >
+                                <option
+                                    class="bg-whiteSmoke text-lightBlack dark:bg-normalBlack px-3 py-3 dark:text-white"
+                                    value="option1">Subject One</option
+                                >
+                                <option
+                                    class="bg-whiteSmoke text-lightBlack dark:bg-normalBlack px-3 py-3 dark:text-white"
+                                    value="option2">Subject Two</option
+                                >
+                                <option
+                                    class="bg-whiteSmoke text-lightBlack dark:bg-normalBlack px-3 py-3 dark:text-white"
+                                    value="option3">Select Three</option
+                                >
+                                <option
+                                    class="bg-whiteSmoke text-lightBlack dark:bg-normalBlack px-3 py-3 dark:text-white"
+                                    value="option4">Select Four</option
+                                >
                             </select>
                             <textarea
                                 rows="10"
-                                class="mt-4 h-[121px] w-full resize-none border border-gray bg-transparent px-4 text-gray placeholder:text-gray focus:border-gray focus:ring-0 focus:outline-none dark:border-lightGray dark:text-lightGray dark:focus:border-lightGray"
-                                placeholder="Write Message:"
-                            ></textarea>
-                            <button type="submit" class="mt-5 h-10 w-full bg-khaki text-center text-white 2xl:h-[55px]">SEND MESSAGE</button>
+                                class="border-gray text-gray placeholder:text-gray focus:border-gray dark:border-lightGray dark:text-lightGray dark:focus:border-lightGray mt-4 h-[121px] w-full resize-none border bg-transparent px-4 focus:ring-0 focus:outline-none"
+                                placeholder="Write Message:"></textarea>
+                            <button
+                                type="submit"
+                                class="bg-khaki mt-5 h-10 w-full text-center text-white 2xl:h-[55px]"
+                                >SEND MESSAGE</button
+                            >
                         </form>
                     </div>
                 </div>
@@ -122,8 +172,7 @@ const { page, lang } = Astro.props;
             height="450"
             allowfullscreen
             loading="lazy"
-            class="w-full"
-        ></iframe>
+            class="w-full"></iframe>
     </div>
 </div>
 
